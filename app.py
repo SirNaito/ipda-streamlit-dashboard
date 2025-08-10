@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # Carregamento dos Dados pro DataFrame do Dashboard - Usando Pandas
-df = pd.read_csv("Main/dados-imersao-final.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/SirNaito/ipda-streamlit-dashboard/refs/heads/main/dados-imersao-final.csv")
 
 # Header da Barra Lateral (Filtros)
 st.sidebar.header("🔍📊 Filtros")
