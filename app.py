@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # Carregamento dos Dados pro DataFrame do Dashboard - Usando Pandas
-df = pd.read_csv("https://raw.githubusercontent.com/vqrca/dashboard_salarios_dados/refs/heads/main/dados-imersao-final.csv")
+df = pd.read_csv("Main/dados-imersao-final.csv")
 
 # Header da Barra Lateral (Filtros)
 st.sidebar.header("🔍📊 Filtros")
@@ -41,7 +41,7 @@ moedas_disponiveis = sorted(df['moeda'].unique())
 moedas_selecionadas = st.sidebar.multiselect("💵 Moeda", moedas_disponiveis, default=moedas_disponiveis)
 
 # Filtro por País
-paises_disponiveis = sorted(df['residencia_iso3'].unique())
+paises_disponiveis = list(df['residencia_iso3'].unique())
 paises_selecionados = st.sidebar.multiselect("🌎 Localidade", paises_disponiveis, default=paises_disponiveis)
 
 # Filtragem do DataFrame 
@@ -53,7 +53,7 @@ df_filtrado = df[
     (df['remoto'].isin(alocacoes_selecionadas)) &
     (df['tamanho_empresa'].isin(tamanhos_selecionados)) &
     (df['moeda'].isin(moedas_selecionadas)) &
-    (df['empresa'].isin(paises_selecionados))
+    (df['residencia_iso3'].isin(paises_selecionados))
 ]
 
 # Painel Principal
